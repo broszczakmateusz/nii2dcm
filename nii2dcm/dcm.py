@@ -154,7 +154,7 @@ class Dicom:
 
         self.ds.SeriesInstanceUID = pyd.uid.generate_uid(None)
         self.ds.FrameOfReferenceUID = pyd.uid.generate_uid(None)
-        self.ds.SeriesNumber = ""
+        self.ds.SeriesNumber = pyd.uid.generate_uid(None)
         self.ds.AcquisitionNumber = ""
 
     def dcm_dictionary_update(self):

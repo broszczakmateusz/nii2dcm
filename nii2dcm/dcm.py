@@ -83,7 +83,7 @@ class Dicom:
         self.ds.Rows = ""
         self.ds.Columns = ""
         self.ds.PixelSpacing = ""
-        self.ds.SamplesPerPixel = "2"
+        self.ds.SamplesPerPixel = 1
         self.ds.ImageOrientationPatient = ['1', '0', '0', '0', '1', '0']
 
         self.ds.RescaleIntercept = ""
@@ -136,6 +136,8 @@ class Dicom:
         # StudyInstanceUID
 
         self.ds.StudyInstanceUID = pyd.uid.generate_uid(None)
+        self.ds.StudyID = "IOHW"
+
 
     def init_series_tags(self):
         """
@@ -277,13 +279,13 @@ class DicomMRI(Dicom):
         self.ds.TriggerWindow = ''
 
         # nb: PresentationLUTShape dependent on PhotometricInterpretation value
-        self.ds.PhotometricInterpretation = 'MONOCHROME'
+        self.ds.PhotometricInterpretation = 'MONOCHROME2'
         self.ds.PresentationLUTShape = 'IDENTITY'
 
         # self.ds.BitsAllocated = ''
         self.ds.BitsStored = ''
         self.ds.HighBit = ''
-        self.ds.PixelRepresentation = ''
+        self.ds.PixelRepresentation = 1
         self.ds.LossyImageCompression = ''
 
         self.ds.RequestingPhysician = ''

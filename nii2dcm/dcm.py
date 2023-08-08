@@ -83,7 +83,7 @@ class Dicom:
         self.ds.Rows = ""
         self.ds.Columns = ""
         self.ds.PixelSpacing = ""
-        self.ds.SamplesPerPixel = ""
+        self.ds.SamplesPerPixel = "2"
         self.ds.ImageOrientationPatient = ['1', '0', '0', '0', '1', '0']
 
         self.ds.RescaleIntercept = ""
@@ -154,7 +154,7 @@ class Dicom:
 
         self.ds.SeriesInstanceUID = pyd.uid.generate_uid(None)
         self.ds.FrameOfReferenceUID = pyd.uid.generate_uid(None)
-        self.ds.SeriesNumber = pyd.uid.generate_uid(None)
+        self.ds.SeriesNumber = "1"
         self.ds.AcquisitionNumber = ""
 
     def dcm_dictionary_update(self):

@@ -63,7 +63,7 @@ class Dicom:
         self.ds.InstanceCreatorUID = ''
 
         self.ds.SOPClassUID = ''
-        self.ds.Modality = ''
+        self.ds.Modality = 'CT'
 
         dt = datetime.datetime.now()
         dateStr = dt.strftime('%Y%m%d')
@@ -113,6 +113,11 @@ class Dicom:
         # 'PerformingPhysicianName': 'PerformingPhysicianName',
         # 'OperatorsName': 'OperatorsName',
 
+
+        self.ds.PhotometricInterpretation = 'MONOCHROME2'
+        self.ds.BitsStored = ''
+        self.ds.PixelRepresentation = 1
+
         self.init_study_tags()
         self.init_series_tags()
 
@@ -138,7 +143,6 @@ class Dicom:
         self.ds.StudyInstanceUID = pyd.uid.generate_uid(None)
         self.ds.StudyID = "IOHW"
 
-
     def init_series_tags(self):
         """
         Create Series Tags
@@ -158,6 +162,8 @@ class Dicom:
         self.ds.FrameOfReferenceUID = pyd.uid.generate_uid(None)
         self.ds.SeriesNumber = "1"
         self.ds.AcquisitionNumber = ""
+        self.file_meta.MediaStorageSOPClassUID = '1.2.840.10008.5.1.4.1.1.2'
+        self.ds.SOPClassUID = '1.2.840.10008.5.1.4.1.1.2'
 
     def dcm_dictionary_update(self):
         """
